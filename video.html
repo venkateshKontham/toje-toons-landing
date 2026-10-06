@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Video — TojeToons</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f7f8; color: #1e1e22; line-height: 1.6; }
+  .app { display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar { width: 260px; background: #1e1e22; color: #fff; padding: 24px 0; flex-shrink: 0; }
+  .sidebar .logo { font-size: 20px; font-weight: 700; padding: 0 24px 24px; border-bottom: 1px solid #333; }
+  .sidebar nav a { display: block; padding: 12px 24px; color: #aaa; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
+  .sidebar nav a.active { background: #f2731a; color: #fff; }
+
+  /* MAIN */
+  .main { flex: 1; padding: 32px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .topbar h1 { font-size: 26px; font-weight: 700; }
+  .topbar .usage { font-size: 14px; color: #666; }
+
+  /* STEPS */
+  .steps-bar { display: flex; gap: 8px; margin-bottom: 32px; }
+  .step-pill { padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; background: #eee; color: #999; }
+  .step-pill.active { background: #f2731a; color: #fff; }
+  .step-pill.done { background: #32b350; color: #fff; }
+
+  /* CARD */
+  .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+
+  /* SCENE LIST */
+  .scene-list { display: flex; flex-direction: column; gap: 16px; }
+  .scene-item { display: flex; gap: 20px; align-items: flex-start; padding: 20px; border: 1px solid #eee; border-radius: 10px; }
+  .scene-num { width: 40px; height: 40px; background: #fff3e8; color: #f2731a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .scene-body { flex: 1; }
+  .scene-body h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .scene-body p { font-size: 14px; color: #666; }
+  .scene-status { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 12px; white-space: nowrap; }
+  .status-queued { background: #eee; color: #999; }
+  .status-generating { background: #fff3e8; color: #f2731a; }
+  .status-done { background: #e8f5e9; color: #32b350; }
+
+  /* PROGRESS */
+  .progress-bar { background: #eee; border-radius: 8px; height: 8px; margin-top: 12px; overflow: hidden; }
+  .progress-fill { background: #f2731a; height: 100%; width: 60%; border-radius: 8px; }
+
+  /* PUBLISH OPTIONS */
+  .publish-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .option { border: 2px solid #eee; border-radius: 10px; padding: 20px; cursor: pointer; transition: all 0.2s; }
+  .option:hover { border-color: #f2731a; }
+  .option.selected { border-color: #f2731a; background: #fff3e8; }
+  .option h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .option p { font-size: 13px; color: #666; }
+
+  /* BUTTONS */
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+  .btn-primary { background: #f2731a; color: #fff; }
+  .btn-primary:hover { background: #d95f0e; }
+  .btn-secondary { background: #eee; color: #555; }
+  .btn-secondary:hover { background: #ddd; }
+  .btn-row { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 16px; }
+    .publish-options { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">TojeToons</div>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#">Projects</a>
+        <a href="character.html">Characters</a>
+        <a href="script.html">Scripts</a>
+        <a href="video.html" class="active">Videos</a>
+        <a href="#">Schedule</a>
+        <a href="index.html">Landing Page</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <h1>Generate Video</h1>
+        <div class="usage">18 of 30 videos left (Pro plan)</div>
+      </div>
+
+      <div class="steps-bar">
+        <div class="step-pill done">1. Script</div>
+        <div class="step-pill done">2. Voice</div>
+        <div class="step-pill active">3. Render</div>
+        <div class="step-pill">4. Publish</div>
+      </div>
+
+      <div class="card">
+        <h2>Scene rendering</h2>
+        <div class="scene-list">
+          <div class="scene-item">
+            <div class="scene-num">1</div>
+            <div class="scene-body">
+              <h3>Morning at the temple</h3>
+              <p>Toju wakes up under the neem tree, checks his empty pocket.</p>
+            </div>
+            <div class="scene-status status-done">Done</div>
+          </div>
+          <div class="scene-item">
+            <div class="scene-num">2</div>
+            <div class="scene-body">
+              <h3>Moju appears</h3>
+              <p>Moju pops out from behind a pillar with a pouch of coins.</p>
+            </div>
+            <div class="scene-status status-done">Done</div>
+          </div>
+          <div class="scene-item">
+            <div class="scene-num">3</div>
+            <div class="scene-body">
+              <h3>The chase</h3>
+              <p>Toju chases Moju around the courtyard, knocking over flower baskets.</p>
+            </div>
+            <div class="scene-status status-generating">Generating</div>
+          </div>
+          <div class="scene-item">
+            <div class="scene-num">4</div>
+            <div class="scene-body">
+              <h3>The deal</h3>
+              <p>Moju offers half the coins. Toju agrees. They walk to the temple together.</p>
+            </div>
+            <div class="scene-status status-queued">Queued</div>
+          </div>
+          <div class="scene-item">
+            <div class="scene-num">5</div>
+            <div class="scene-body">
+              <h3>End card</h3>
+              <p>Text on screen: "Mee intiki ee Dasara ki entha mandi vastunnaru?"</p>
+            </div>
+            <div class="scene-status status-queued">Queued</div>
+          </div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <p style="font-size:13px;color:#999;margin-top:8px">3 of 5 scenes complete · estimated 4 minutes remaining</p>
+      </div>
+
+      <div class="card">
+        <h2>Publish options</h2>
+        <div class="publish-options">
+          <div class="option selected">
+            <h3>Publish now</h3>
+            <p>Upload to YouTube immediately after rendering completes.</p>
+          </div>
+          <div class="option">
+            <h3>Schedule</h3>
+            <p>Pick a date and time. Video goes live automatically.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a href="script.html" class="btn btn-secondary">Back to Script</a>
+        <a href="dashboard.html" class="btn btn-primary">Finish &amp; Go to Dashboard</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
