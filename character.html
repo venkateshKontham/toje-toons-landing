@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Character — TojeToons</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f7f8; color: #1e1e22; line-height: 1.6; }
+  .app { display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar { width: 260px; background: #1e1e22; color: #fff; padding: 24px 0; flex-shrink: 0; }
+  .sidebar .logo { font-size: 20px; font-weight: 700; padding: 0 24px 24px; border-bottom: 1px solid #333; }
+  .sidebar nav a { display: block; padding: 12px 24px; color: #aaa; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
+  .sidebar nav a.active { background: #f2731a; color: #fff; }
+
+  /* MAIN */
+  .main { flex: 1; padding: 32px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .topbar h1 { font-size: 26px; font-weight: 700; }
+  .topbar .usage { font-size: 14px; color: #666; }
+
+  /* STEPS */
+  .steps-bar { display: flex; gap: 8px; margin-bottom: 32px; }
+  .step-pill { padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; background: #eee; color: #999; }
+  .step-pill.active { background: #f2731a; color: #fff; }
+  .step-pill.done { background: #32b350; color: #fff; }
+
+  /* FORM CARD */
+  .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .field input, .field textarea { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; font-family: inherit; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: #f2731a; }
+  .field textarea { resize: vertical; min-height: 80px; }
+  .field .hint { font-size: 13px; color: #999; margin-top: 4px; }
+
+  /* UPLOAD ZONE */
+  .upload-zone { border: 2px dashed #ddd; border-radius: 12px; padding: 48px 24px; text-align: center; color: #999; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .upload-zone:hover { border-color: #f2731a; background: #fff8f3; }
+  .upload-zone .icon { font-size: 40px; margin-bottom: 12px; }
+  .upload-zone strong { color: #f2731a; }
+
+  /* STYLE GRID */
+  .style-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .style-option { border: 2px solid #eee; border-radius: 10px; padding: 16px; text-align: center; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+  .style-option:hover { border-color: #f2731a; }
+  .style-option.selected { border-color: #f2731a; background: #fff3e8; color: #f2731a; }
+
+  /* PREVIEW */
+  .preview-box { background: #f7f7f8; border-radius: 12px; padding: 32px; text-align: center; color: #999; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .preview-box .placeholder { font-size: 48px; margin-bottom: 8px; }
+
+  /* BUTTONS */
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+  .btn-primary { background: #f2731a; color: #fff; }
+  .btn-primary:hover { background: #d95f0e; }
+  .btn-secondary { background: #eee; color: #555; }
+  .btn-secondary:hover { background: #ddd; }
+  .btn-row { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">TojeToons</div>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#">Projects</a>
+        <a href="character.html" class="active">Characters</a>
+        <a href="#">Scripts</a>
+        <a href="#">Videos</a>
+        <a href="#">Schedule</a>
+        <a href="index.html">Landing Page</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <h1>Create Character</h1>
+        <div class="usage">1 of 1 characters used (Free plan)</div>
+      </div>
+
+      <div class="steps-bar">
+        <div class="step-pill active">1. Details</div>
+        <div class="step-pill">2. References</div>
+        <div class="step-pill">3. Style</div>
+        <div class="step-pill">4. Preview</div>
+      </div>
+
+      <div class="card">
+        <h2>Character details</h2>
+        <div class="field">
+          <label for="name">Character name</label>
+          <input type="text" id="name" placeholder="e.g. Toju">
+        </div>
+        <div class="field">
+          <label for="desc">Description</label>
+          <textarea id="desc" placeholder="A fat, grumpy white cat who owns a village shop..."></textarea>
+          <div class="hint">Describe personality, appearance, and role. The AI uses this for every scene.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Reference images</h2>
+        <div class="upload-zone">
+          <div class="icon">&#128206;</div>
+          <strong>Click to upload</strong> or drag and drop<br>
+          <span style="font-size:13px">PNG, JPG up to 10MB each &middot; 3 to 10 images recommended</span>
+        </div>
+        <div class="hint" style="margin-top:12px">These images train the model so your character stays consistent across all videos.</div>
+      </div>
+
+      <div class="card">
+        <h2>Art style</h2>
+        <div class="style-grid">
+          <div class="style-option selected">3D Pixar</div>
+          <div class="style-option">2D Cartoon</div>
+          <div class="style-option">Cinematic</div>
+          <div class="style-option">Claymation</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Preview</h2>
+        <div class="preview-box">
+          <div class="placeholder">&#128062;</div>
+          Upload reference images to see your character preview here
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a href="dashboard.html" class="btn btn-secondary">Cancel</a>
+        <a href="dashboard.html" class="btn btn-primary">Save Character</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
