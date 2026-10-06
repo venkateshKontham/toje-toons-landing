@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — TojeToons</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f7f8; color: #1e1e22; line-height: 1.6; }
+  .app { display: flex; min-height: 100vh; }
+  .sidebar { width: 260px; background: #1e1e22; color: #fff; padding: 24px 0; flex-shrink: 0; }
+  .sidebar .logo { font-size: 20px; font-weight: 700; padding: 0 24px 24px; border-bottom: 1px solid #333; }
+  .sidebar nav a { display: block; padding: 12px 24px; color: #aaa; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
+  .sidebar nav a.active { background: #f2731a; color: #fff; }
+  .main { flex: 1; padding: 32px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .topbar h1 { font-size: 26px; font-weight: 700; }
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+  .btn-primary { background: #f2731a; color: #fff; }
+  .btn-primary:hover { background: #d95f0e; }
+  .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .project-card { border: 1px solid #eee; border-radius: 12px; padding: 24px; transition: all 0.2s; }
+  .project-card:hover { border-color: #f2731a; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .project-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .project-card p { font-size: 14px; color: #666; margin-bottom: 16px; }
+  .project-meta { display: flex; justify-content: space-between; font-size: 13px; color: #999; }
+  .status { padding: 4px 12px; border-radius: 12px; font-weight: 600; }
+  .status-active { background: #e8f5e9; color: #32b350; }
+  .status-draft { background: #eee; color: #999; }
+  .empty { text-align: center; padding: 60px 24px; color: #999; }
+  .empty .icon { font-size: 48px; margin-bottom: 12px; }
+  @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">TojeToons</div>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="character.html">Characters</a>
+        <a href="script.html">Scripts</a>
+        <a href="video.html">Videos</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="index.html">Landing Page</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <h1>Projects</h1>
+        <a href="script.html" class="btn btn-primary">+ New Project</a>
+      </div>
+      <div class="card">
+        <h2>Your projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>Dasara Temple Story</h3>
+            <p>Toju and Moju visit Tirupati during Dasara holidays. Comedy tone, 30-second short.</p>
+            <div class="project-meta">
+              <span class="status status-active">Active</span>
+              <span>3 videos</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Train Journey</h3>
+            <p>Toju and Moju take a train across India, eating samosas along the way.</p>
+            <div class="project-meta">
+              <span class="status status-draft">Draft</span>
+              <span>0 videos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
