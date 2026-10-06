@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TojeToons — Automate Your Faceless YouTube Channel</title>
+<title>TojeToons — Make Faceless YouTube Videos on Autopilot</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1e1e22; line-height: 1.6; }
@@ -12,51 +12,71 @@
   /* NAV */
   nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #eee; }
   .logo { font-size: 22px; font-weight: 700; color: #1e1e22; text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: #555; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .nav-links a:hover { color: #f2731a; }
   .nav-btn { background: #f2731a; color: #fff; padding: 10px 24px; border-radius: 24px; text-decoration: none; font-weight: 600; font-size: 15px; }
   .nav-btn:hover { background: #d95f0e; }
 
   /* HERO */
-  .hero { padding: 100px 0 80px; text-align: center; }
-  .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
-  .hero p { font-size: 20px; color: #666; max-width: 600px; margin: 0 auto 36px; }
+  .hero { padding: 80px 0 60px; text-align: center; }
+  .hero h1 { font-size: 46px; font-weight: 800; line-height: 1.2; margin-bottom: 18px; }
+  .hero p { font-size: 19px; color: #666; max-width: 640px; margin: 0 auto 32px; }
   .cta { background: #f2731a; color: #fff; padding: 16px 40px; border-radius: 28px; text-decoration: none; font-weight: 700; font-size: 18px; display: inline-block; }
   .cta:hover { background: #d95f0e; }
+  .cta-sub { margin-top: 14px; font-size: 14px; color: #999; }
+
+  /* DEMO */
+  .demo { padding: 0 0 80px; }
+  .demo-box { background: #f7f7f8; border: 2px dashed #ddd; border-radius: 16px; padding: 80px 24px; text-align: center; color: #999; font-size: 16px; }
+  .demo-box .play { font-size: 48px; margin-bottom: 12px; }
 
   /* PROBLEM */
   .problem { padding: 80px 0; background: #f7f7f8; }
-  .problem h2 { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 48px; }
+  .problem h2 { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 16px; }
+  .problem .sub { text-align: center; color: #666; max-width: 600px; margin: 0 auto 48px; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
   .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .card h3 { font-size: 18px; font-weight: 600; }
+  .card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+  .card p { color: #666; font-size: 15px; }
 
   /* HOW IT WORKS */
   .how { padding: 80px 0; }
-  .how h2 { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 48px; }
+  .how h2 { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 48px; }
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
   .step { background: #fff3e8; border-radius: 12px; padding: 32px; text-align: center; }
-  .step h3 { font-size: 22px; font-weight: 700; color: #f2731a; }
+  .step .num { font-size: 28px; font-weight: 800; color: #f2731a; margin-bottom: 8px; }
+  .step h3 { font-size: 20px; font-weight: 700; color: #f2731a; margin-bottom: 8px; }
+  .step p { color: #666; font-size: 14px; }
 
   /* FEATURES */
   .features { padding: 80px 0; background: #f7f7f8; }
-  .features h2 { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 48px; }
+  .features h2 { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 48px; }
 
   /* PRICING */
   .pricing { padding: 80px 0; }
-  .pricing h2 { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 48px; }
+  .pricing h2 { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 16px; }
+  .pricing .sub { text-align: center; color: #666; margin-bottom: 48px; }
   .price-card.featured { background: #fff3e8; border: 2px solid #f2731a; }
+  .price-card .price { font-size: 36px; font-weight: 800; margin: 12px 0; }
+  .price-card ul { list-style: none; margin: 16px 0; }
+  .price-card li { padding: 6px 0; font-size: 15px; color: #555; }
+  .price-card li:before { content: "\2713"; color: #32b350; margin-right: 8px; font-weight: 700; }
 
   /* FAQ */
   .faq { padding: 80px 0; background: #f7f7f8; }
-  .faq h2 { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 48px; }
-  .faq-item { max-width: 700px; margin: 0 auto 24px; }
-  .faq-item p { color: #666; font-size: 16px; }
+  .faq h2 { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 48px; }
+  .faq-item { max-width: 700px; margin: 0 auto 24px; background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .faq-item strong { display: block; margin-bottom: 6px; }
+  .faq-item p { color: #666; font-size: 15px; }
 
   /* FOOTER */
   footer { padding: 32px 0; text-align: center; color: #999; font-size: 14px; border-top: 1px solid #eee; }
 
   @media (max-width: 768px) {
-    .hero h1 { font-size: 32px; }
-    .hero p { font-size: 17px; }
+    .hero h1 { font-size: 30px; }
+    .hero p { font-size: 16px; }
+    .nav-links a { display: none; }
   }
 </style>
 </head>
@@ -64,74 +84,94 @@
   <div class="container">
     <nav>
       <a href="index.html" class="logo">TojeToons</a>
-      <a href="dashboard.html" class="nav-btn">Get Started</a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="dashboard.html" class="nav-btn">Free Trial</a>
+      </div>
     </nav>
   </div>
 
   <section class="hero">
     <div class="container">
-      <h1>Automate your faceless YouTube channel</h1>
-      <p>Script, voice, video, and scheduling — all in one place. Two videos a day, on autopilot.</p>
+      <h1>Make two Telugu cartoon videos a day<br>without recording anything</h1>
+      <p>TojeToons writes the script, generates the voice, renders the video, and schedules the upload — all in one place. Your channel runs while you sleep.</p>
       <a href="dashboard.html" class="cta">Start Free Trial</a>
+      <div class="cta-sub">No credit card required &middot; 14-day free trial</div>
+    </div>
+  </section>
+
+  <section class="demo">
+    <div class="container">
+      <div class="demo-box">
+        <div class="play">&#9654;</div>
+        Watch a 30-second demo — Toju &amp; Moju in action
+      </div>
     </div>
   </section>
 
   <section class="problem">
     <div class="container">
-      <h2>Making videos shouldn't take all day</h2>
+      <h2>You already know this pain</h2>
+      <p class="sub">Every faceless creator hits the same wall — and it kills the channel before it starts.</p>
       <div class="cards">
-        <div class="card"><h3>Hours spent writing scripts</h3></div>
-        <div class="card"><h3>Recording voiceovers is a hassle</h3></div>
-        <div class="card"><h3>Editing and scheduling across three tools</h3></div>
+        <div class="card"><h3>Three hours of editing, one missed upload</h3><p>You spent the whole night cutting clips and still missed your 6 PM slot. Subscribers notice.</p></div>
+        <div class="card"><h3>Your character looks different every video</h3><p>One day the cat has a white belly, the next it doesn't. Viewers stop trusting the channel.</p></div>
+        <div class="card"><h3>Five tabs open, zero videos published</h3><p>Script in one app, voice in another, editing in a third, scheduling in a fourth. Nothing ships.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="how">
+  <section class="how" id="how">
     <div class="container">
       <h2>How it works</h2>
       <div class="steps">
-        <div class="step"><h3>1. Script</h3></div>
-        <div class="step"><h3>2. Voice</h3></div>
-        <div class="step"><h3>3. Video</h3></div>
-        <div class="step"><h3>4. Schedule</h3></div>
+        <div class="step"><div class="num">1</div><h3>Script</h3><p>AI writes a full Telugu script for your story — you just approve it.</p></div>
+        <div class="step"><div class="num">2</div><h3>Voice</h3><p>Natural Telugu voiceover generated in seconds, no recording needed.</p></div>
+        <div class="step"><div class="num">3</div><h3>Video</h3><p>Your characters render in a consistent style across every scene.</p></div>
+        <div class="step"><div class="num">4</div><h3>Schedule</h3><p>Pick your times and it uploads to YouTube automatically.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="features">
+  <section class="features" id="features">
     <div class="container">
-      <h2>Features</h2>
+      <h2>Why creators choose TojeToons</h2>
       <div class="cards">
-        <div class="card"><h3>Character consistency</h3></div>
-        <div class="card"><h3>Bulk generation</h3></div>
-        <div class="card"><h3>Smart scheduler</h3></div>
-        <div class="card"><h3>YouTube integration</h3></div>
+        <div class="card"><h3>Character consistency</h3><p>Upload reference images once. Toju and Moju look the same in every video, every scene.</p></div>
+        <div class="card"><h3>Bulk generation</h3><p>Generate a week of videos in one sitting. Queue them up and forget about it.</p></div>
+        <div class="card"><h3>Smart scheduler</h3><p>Set your posting times once. Videos go live on YouTube at exactly the right moment.</p></div>
+        <div class="card"><h3>YouTube integration</h3><p>Direct upload with titles, descriptions, and thumbnails handled automatically.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="pricing">
+  <section class="pricing" id="pricing">
     <div class="container">
-      <h2>Pricing</h2>
+      <h2>Simple pricing</h2>
+      <p class="sub">Start free. Upgrade when your channel grows.</p>
       <div class="cards">
-        <div class="card"><h3>Free Trial</h3></div>
-        <div class="card price-card featured"><h3>Pro — $12/mo</h3></div>
-        <div class="card"><h3>Business — $29/mo</h3></div>
+        <div class="card"><h3>Free Trial</h3><p class="price">$0</p><ul><li>5 videos</li><li>1 character</li><li>Basic scheduler</li></ul><a href="dashboard.html" class="cta">Start Free</a></div>
+        <div class="card price-card featured"><h3>Pro</h3><p class="price">$12<span style="font-size:16px;font-weight:400">/mo</span></p><ul><li>30 videos / month</li><li>Unlimited characters</li><li>Smart scheduler</li><li>Priority generation</li></ul><a href="dashboard.html" class="cta">Start Free Trial</a></div>
+        <div class="card"><h3>Business</h3><p class="price">$29<span style="font-size:16px;font-weight:400">/mo</span></p><ul><li>100 videos / month</li><li>Team seats</li><li>API access</li><li>Dedicated support</li></ul><a href="dashboard.html" class="cta">Contact Us</a></div>
       </div>
     </div>
   </section>
 
-  <section class="faq">
+  <section class="faq" id="faq">
     <div class="container">
       <h2>FAQ</h2>
-      <div class="faq-item"><p><strong>Can I use copyrighted characters?</strong> — No, only original characters.</p></div>
-      <div class="faq-item"><p><strong>How many videos can I generate?</strong> — Depends on your plan.</p></div>
+      <div class="faq-item"><strong>Can I use copyrighted characters like Tom and Jerry?</strong><p>No. TojeToons only supports original characters you create or upload. Using copyrighted characters risks demonetization and channel strikes.</p></div>
+      <div class="faq-item"><strong>How many videos can I generate?</strong><p>It depends on your plan — 5 on the free trial, 30 on Pro, 100 on Business.</p></div>
+      <div class="faq-item"><strong>Do I need to know video editing?</strong><p>Not at all. The AI handles rendering, voiceover, and editing. You just approve the script.</p></div>
+      <div class="faq-item"><strong>What languages are supported?</strong><p>Telugu voiceover and scripts are fully supported, with more languages coming.</p></div>
     </div>
   </section>
 
   <footer>
-    <div class="container">© 2026 TojeToons. All rights reserved.</div>
+    <div class="container">&copy; 2026 TojeToons. All rights reserved.</div>
   </footer>
 </body>
 </html>
