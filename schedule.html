@@ -14,24 +14,21 @@
   .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
   .sidebar nav a.active { background: #f2731a; color: #fff; }
   .main { flex: 1; padding: 32px; }
-  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .topbar { margin-bottom: 32px; }
   .topbar h1 { font-size: 26px; font-weight: 700; }
-  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
-  .btn-primary { background: #f2731a; color: #fff; }
-  .btn-primary:hover { background: #d95f0e; }
   .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
   .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
   .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
-  .cal-header { text-align: center; font-weight: 600; font-size: 14px; color: #999; padding: 8px 0; }
-  .cal-day { border: 1px solid #eee; border-radius: 8px; min-height: 100px; padding: 8px; font-size: 13px; }
-  .cal-day .num { font-weight: 600; margin-bottom: 4px; }
-  .cal-event { background: #fff3e8; color: #f2731a; border-radius: 4px; padding: 4px 6px; margin-bottom: 4px; font-size: 12px; font-weight: 600; }
-  .cal-event.published { background: #e8f5e9; color: #32b350; }
-  .scheduled-list { display: flex; flex-direction: column; gap: 12px; }
-  .sched-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 1px solid #eee; border-radius: 10px; }
-  .sched-item h3 { font-size: 15px; font-weight: 600; }
-  .sched-item p { font-size: 13px; color: #666; }
-  .sched-status { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 12px; }
+  .calendar .day-header { text-align: center; font-size: 12px; font-weight: 600; color: #999; padding: 8px 0; }
+  .calendar .day { aspect-ratio: 1; border: 1px solid #eee; border-radius: 8px; padding: 8px; font-size: 13px; cursor: pointer; }
+  .calendar .day:hover { background: #fff8f0; }
+  .calendar .day.has-video { background: #fff3e8; border-color: #f2731a; font-weight: 700; color: #f2731a; }
+  .calendar .day.today { border: 2px solid #f2731a; }
+  .upload-list { display: flex; flex-direction: column; gap: 12px; }
+  .upload-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 1px solid #eee; border-radius: 10px; }
+  .upload-item h3 { font-size: 15px; font-weight: 600; }
+  .upload-item p { font-size: 13px; color: #666; }
+  .status { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 12px; }
   .status-scheduled { background: #fff3e8; color: #f2731a; }
   .status-published { background: #e8f5e9; color: #32b350; }
   @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } }
@@ -48,74 +45,48 @@
         <a href="script.html">Scripts</a>
         <a href="video.html">Videos</a>
         <a href="schedule.html" class="active">Schedule</a>
+        <a href="settings.html">Settings</a>
         <a href="index.html">Landing Page</a>
       </nav>
     </aside>
     <main class="main">
       <div class="topbar">
         <h1>Schedule</h1>
-        <a href="#" class="btn btn-primary">+ Schedule Video</a>
       </div>
       <div class="card">
         <h2>October 2026</h2>
         <div class="calendar">
-          <div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>
-          <div class="cal-day"><div class="num">1</div></div>
-          <div class="cal-day"><div class="num">2</div></div>
-          <div class="cal-day"><div class="num">3</div></div>
-          <div class="cal-day"><div class="num">4</div></div>
-          <div class="cal-day"><div class="num">5</div></div>
-          <div class="cal-day"><div class="num">6</div></div>
-          <div class="cal-day"><div class="num">7</div><div class="cal-event published">Dasara Part 2</div></div>
-          <div class="cal-day"><div class="num">8</div></div>
-          <div class="cal-day"><div class="num">9</div></div>
-          <div class="cal-day"><div class="num">10</div><div class="cal-event">Dasara Part 1</div></div>
-          <div class="cal-day"><div class="num">11</div></div>
-          <div class="cal-day"><div class="num">12</div><div class="cal-event">Train Journey</div></div>
-          <div class="cal-day"><div class="num">13</div></div>
-          <div class="cal-day"><div class="num">14</div></div>
-          <div class="cal-day"><div class="num">15</div></div>
-          <div class="cal-day"><div class="num">16</div></div>
-          <div class="cal-day"><div class="num">17</div></div>
-          <div class="cal-day"><div class="num">18</div></div>
-          <div class="cal-day"><div class="num">19</div></div>
-          <div class="cal-day"><div class="num">20</div></div>
-          <div class="cal-day"><div class="num">21</div></div>
-          <div class="cal-day"><div class="num">22</div></div>
-          <div class="cal-day"><div class="num">23</div></div>
-          <div class="cal-day"><div class="num">24</div></div>
-          <div class="cal-day"><div class="num">25</div></div>
-          <div class="cal-day"><div class="num">26</div></div>
-          <div class="cal-day"><div class="num">27</div></div>
-          <div class="cal-day"><div class="num">28</div></div>
-          <div class="cal-day"><div class="num">29</div></div>
-          <div class="cal-day"><div class="num">30</div></div>
-          <div class="cal-day"><div class="num">31</div></div>
+          <div class="day-header">Sun</div><div class="day-header">Mon</div><div class="day-header">Tue</div><div class="day-header">Wed</div><div class="day-header">Thu</div><div class="day-header">Fri</div><div class="day-header">Sat</div>
+          <div class="day"></div><div class="day"></div><div class="day"></div><div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div>
+          <div class="day">5</div><div class="day">6</div><div class="day has-video today">7</div><div class="day">8</div><div class="day">9</div><div class="day has-video">10</div><div class="day">11</div>
+          <div class="day has-video">12</div><div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div>
+          <div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div>
+          <div class="day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
         </div>
       </div>
       <div class="card">
-        <h2>Upcoming uploads</h2>
-        <div class="scheduled-list">
-          <div class="sched-item">
+        <h2>Upcoming Uploads</h2>
+        <div class="upload-list">
+          <div class="upload-item">
             <div>
               <h3>Dasara Temple Story — Part 1</h3>
-              <p>Scheduled for Oct 10, 6:00 PM IST</p>
+              <p>Oct 10 &middot; 6:00 PM IST</p>
             </div>
-            <div class="sched-status status-scheduled">Scheduled</div>
+            <div class="status status-scheduled">Scheduled</div>
           </div>
-          <div class="sched-item">
+          <div class="upload-item">
             <div>
               <h3>Train Journey — Samosa Scene</h3>
-              <p>Scheduled for Oct 12, 6:00 PM IST</p>
+              <p>Oct 12 &middot; 6:00 PM IST</p>
             </div>
-            <div class="sched-status status-scheduled">Scheduled</div>
+            <div class="status status-scheduled">Scheduled</div>
           </div>
-          <div class="sched-item">
+          <div class="upload-item">
             <div>
               <h3>Dasara Temple Story — Part 2</h3>
-              <p>Published Oct 7, 6:00 PM IST</p>
+              <p>Oct 7 &middot; Published</p>
             </div>
-            <div class="sched-status status-published">Published</div>
+            <div class="status status-published">Published</div>
           </div>
         </div>
       </div>

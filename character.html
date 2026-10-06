@@ -13,7 +13,7 @@
   .sidebar nav a { display: block; padding: 12px 24px; color: #aaa; text-decoration: none; font-size: 15px; font-weight: 500; }
   .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
   .sidebar nav a.active { background: #f2731a; color: #fff; }
-  .main { flex: 1; padding: 32px; }
+  .main { flex: 1; padding: 32px; max-width: 800px; }
   .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
   .topbar h1 { font-size: 26px; font-weight: 700; }
   .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
@@ -21,12 +21,17 @@
   .btn-primary:hover { background: #d95f0e; }
   .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
   .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
-  .char-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-  .char-card { border: 1px solid #eee; border-radius: 12px; padding: 24px; text-align: center; }
-  .char-card .avatar { font-size: 64px; margin-bottom: 12px; }
-  .char-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-  .char-card p { font-size: 14px; color: #666; margin-bottom: 16px; }
-  .char-meta { font-size: 13px; color: #999; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; font-family: inherit; }
+  .form-group textarea { min-height: 80px; resize: vertical; }
+  .upload-zone { border: 2px dashed #ddd; border-radius: 10px; padding: 40px; text-align: center; color: #999; cursor: pointer; }
+  .upload-zone:hover { border-color: #f2731a; color: #f2731a; }
+  .style-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .style-option { padding: 16px; border: 2px solid #eee; border-radius: 10px; text-align: center; cursor: pointer; font-size: 14px; font-weight: 600; }
+  .style-option:hover, .style-option.selected { border-color: #f2731a; background: #fff8f0; }
+  .preview-box { background: #f7f7f8; border-radius: 10px; padding: 40px; text-align: center; color: #999; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+  .usage { font-size: 13px; color: #999; margin-top: 8px; }
   @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } }
 </style>
 </head>
@@ -41,30 +46,45 @@
         <a href="script.html">Scripts</a>
         <a href="video.html">Videos</a>
         <a href="schedule.html">Schedule</a>
+        <a href="settings.html">Settings</a>
         <a href="index.html">Landing Page</a>
       </nav>
     </aside>
     <main class="main">
       <div class="topbar">
-        <h1>Characters</h1>
-        <a href="character.html" class="btn btn-primary">+ Create Character</a>
+        <h1>Create Character</h1>
+        <div class="usage">1 of 1 characters used (Free plan)</div>
       </div>
       <div class="card">
-        <h2>Your characters</h2>
-        <div class="char-grid">
-          <div class="char-card">
-            <div class="avatar">&#128008;</div>
-            <h3>Toju</h3>
-            <p>Fat, grumpy white cat who owns a village shop. Always hungry, always complaining.</p>
-            <div class="char-meta">3D Pixar &middot; 12 videos</div>
-          </div>
-          <div class="char-card">
-            <div class="avatar">&#128045;</div>
-            <h3>Moju</h3>
-            <p>Thin, clever village mouse. Poor but smart, always one step ahead.</p>
-            <div class="char-meta">3D Pixar &middot; 12 videos</div>
-          </div>
+        <h2>Step 1: Character Details</h2>
+        <div class="form-group">
+          <label>Character Name</label>
+          <input type="text" placeholder="e.g., Toju">
         </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea placeholder="Describe the character's personality and look..."></textarea>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Step 2: Reference Images</h2>
+        <div class="upload-zone">
+          Drop reference images here or click to upload<br><span style="font-size:12px">PNG, JPG up to 10MB each</span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Step 3: Art Style</h2>
+        <div class="style-grid">
+          <div class="style-option selected">3D Pixar</div>
+          <div class="style-option">2D Cartoon</div>
+          <div class="style-option">Cinematic</div>
+          <div class="style-option">Claymation</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Step 4: Preview</h2>
+        <div class="preview-box">Upload reference images to see your character preview</div>
+        <button class="btn btn-primary" style="margin-top:20px">Save Character</button>
       </div>
     </main>
   </div>
