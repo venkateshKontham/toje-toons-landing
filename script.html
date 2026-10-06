@@ -3,32 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Script — TojeToons</title>
+<title>Scripts — TojeToons</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f7f8; color: #1e1e22; line-height: 1.6; }
   .app { display: flex; min-height: 100vh; }
-
-  /* SIDEBAR */
   .sidebar { width: 260px; background: #1e1e22; color: #fff; padding: 24px 0; flex-shrink: 0; }
   .sidebar .logo { font-size: 20px; font-weight: 700; padding: 0 24px 24px; border-bottom: 1px solid #333; }
   .sidebar nav a { display: block; padding: 12px 24px; color: #aaa; text-decoration: none; font-size: 15px; font-weight: 500; }
   .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
   .sidebar nav a.active { background: #f2731a; color: #fff; }
-
-  /* MAIN */
   .main { flex: 1; padding: 32px; }
   .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
   .topbar h1 { font-size: 26px; font-weight: 700; }
   .topbar .usage { font-size: 14px; color: #666; }
-
-  /* STEPS */
   .steps-bar { display: flex; gap: 8px; margin-bottom: 32px; }
   .step-pill { padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; background: #eee; color: #999; }
   .step-pill.active { background: #f2731a; color: #fff; }
   .step-pill.done { background: #32b350; color: #fff; }
-
-  /* FORM CARD */
   .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
   .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
   .field { margin-bottom: 20px; }
@@ -37,28 +29,17 @@
   .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: #f2731a; }
   .field textarea { resize: vertical; min-height: 100px; }
   .field .hint { font-size: 13px; color: #999; margin-top: 4px; }
-
-  /* ROW */
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-  /* SCRIPT OUTPUT */
   .script-output { background: #f7f7f8; border-radius: 12px; padding: 24px; font-size: 15px; line-height: 1.8; color: #333; white-space: pre-wrap; }
   .script-output .scene { font-weight: 700; color: #f2731a; margin-top: 16px; }
   .script-output .scene:first-child { margin-top: 0; }
-
-  /* BUTTONS */
   .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
   .btn-primary { background: #f2731a; color: #fff; }
   .btn-primary:hover { background: #d95f0e; }
   .btn-secondary { background: #eee; color: #555; }
   .btn-secondary:hover { background: #ddd; }
   .btn-row { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
-
-  @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .main { padding: 16px; }
-    .row { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } .row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -67,28 +48,25 @@
       <div class="logo">TojeToons</div>
       <nav>
         <a href="dashboard.html">Dashboard</a>
-        <a href="#">Projects</a>
+        <a href="projects.html">Projects</a>
         <a href="character.html">Characters</a>
         <a href="script.html" class="active">Scripts</a>
-        <a href="#">Videos</a>
-        <a href="#">Schedule</a>
+        <a href="video.html">Videos</a>
+        <a href="schedule.html">Schedule</a>
         <a href="index.html">Landing Page</a>
       </nav>
     </aside>
-
     <main class="main">
       <div class="topbar">
         <h1>New Script</h1>
         <div class="usage">18 of 30 videos left (Pro plan)</div>
       </div>
-
       <div class="steps-bar">
         <div class="step-pill done">1. Settings</div>
         <div class="step-pill active">2. Generate</div>
         <div class="step-pill">3. Review</div>
         <div class="step-pill">4. Approve</div>
       </div>
-
       <div class="card">
         <h2>Story settings</h2>
         <div class="row">
@@ -102,6 +80,7 @@
           <div class="field">
             <label for="duration">Video length</label>
             <select id="duration">
+              <option>15 seconds</option>
               <option>30 seconds (Short)</option>
               <option>60 seconds</option>
               <option>3 minutes</option>
@@ -137,7 +116,6 @@
           <a href="#" class="btn btn-primary">Generate Script</a>
         </div>
       </div>
-
       <div class="card">
         <h2>Generated script</h2>
         <div class="script-output"><span class="scene">Scene 1 — Morning at the temple</span>
@@ -155,10 +133,9 @@ Moju peeks out and offers half the coins. Toju agrees. They walk to the temple t
 <span class="scene">Scene 5 — End card</span>
 Text on screen: "Mee intiki ee Dasara ki entha mandi vastunnaru?"</div>
       </div>
-
       <div class="btn-row">
         <a href="#" class="btn btn-secondary">Regenerate</a>
-        <a href="dashboard.html" class="btn btn-primary">Approve &amp; Continue</a>
+        <a href="video.html" class="btn btn-primary">Approve &amp; Continue</a>
       </div>
     </main>
   </div>
