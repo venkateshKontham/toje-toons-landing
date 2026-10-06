@@ -100,7 +100,7 @@
       <div class="card">
         <h2>Publish Options</h2>
         <div class="publish-options">
-          <button class="btn btn-primary" onclick="openPublishModal()">Publish Now</button>
+          <button type="button" class="btn btn-primary" id="publishBtn">Publish Now</button>
           <a href="schedule.html" class="btn btn-secondary">Schedule</a>
         </div>
         <div class="actions" style="margin-top:20px">
@@ -116,7 +116,7 @@
       <h2>Confirm Publish</h2>
       <p class="subtitle">Review before your video goes live on YouTube.</p>
       <label>Title</label>
-      <input type="text" value="Dasara Holidays lo Toju ki SHOCK!! 😭" id="pubTitle">
+      <input type="text" value="Dasara Holidays lo Toju ki SHOCK!!" id="pubTitle">
       <label>Description</label>
       <textarea id="pubDesc">Toju and Moju visit the temple for Dasara holidays. Comedy ensues. #TojeToons #TeluguCartoon</textarea>
       <label>Tags</label>
@@ -127,28 +127,40 @@
         <label><input type="radio" name="visibility" value="unlisted"> Unlisted</label>
         <label><input type="radio" name="visibility" value="private"> Private</label>
       </div>
-      <div class="warning">⚠️ Once published, pulling the video back is messy. Double-check the title and description before confirming.</div>
+      <div class="warning">Once published, pulling the video back is messy. Double-check the title and description before confirming.</div>
       <div class="modal-actions">
-        <button class="btn btn-secondary" onclick="closePublishModal()">Cancel</button>
-        <button class="btn btn-primary" onclick="confirmPublish()">Publish</button>
+        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmBtn">Publish</button>
       </div>
     </div>
   </div>
 
   <script>
-    function openPublishModal() {
-      document.getElementById('publishModal').classList.add('open);
-    }
-    function closePublishModal() {
-      document.getElementById('publishModal').classList.remove('open);
-    }
-    function confirmPublish() {
-      alert('Video published to YouTube! (Demo only — no real upload happens in this prototype.)\nTitle: ' + document.getElementById('pubTitle').value);
-      closePublishModal();
-    }
-    document.getElementById('publishModal').addEventListener('click', function(e) {
-      if (e.target === this) closePublishModal();
-    });
+    (function() {
+      var modal = document.getElementById('publishModal);
+      var publishBtn = document.getElementById('publishBtn);
+      var cancelBtn = document.getElementById('cancelBtn);
+      var confirmBtn = document.getElementById('confirmBtn);
+      var titleInput = document.getElementById('pubTitle);
+
+      function openModal() {
+        modal.classList.add('open);
+      }
+      function closeModal() {
+        modal.classList.remove('open);
+      }
+      function confirmPublish() {
+        alert('Video published to YouTube! (Demo only - no real upload happens in this prototype.)\nTitle: ' + titleInput.value);
+        closeModal();
+      }
+
+      if (publishBtn) publishBtn.addEventListener('click', openModal);
+      if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+      if (confirmBtn) confirmBtn.addEventListener('click', confirmPublish);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+    })();
   </script>
 </body>
 </html>
