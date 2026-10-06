@@ -14,8 +14,12 @@
   .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
   .sidebar nav a.active { background: #f2731a; color: #fff; }
   .main { flex: 1; padding: 32px; }
-  .topbar { margin-bottom: 32px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
   .topbar h1 { font-size: 26px; font-weight: 700; }
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+  .btn-primary { background: #f2731a; color: #fff; }
+  .btn-primary:hover { background: #d95f0e; }
+  .btn-secondary { background: #fff; color: #f2731a; border: 1px solid #f2731a; }
   .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
   .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
   .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
@@ -31,6 +35,19 @@
   .status { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 12px; }
   .status-scheduled { background: #fff3e8; color: #f2731a; }
   .status-published { background: #e8f5e9; color: #32b350; }
+  .status-failed { background: #fdecea; color: #d32f2f; }
+  .rule-card { border: 1px solid #eee; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+  .rule-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .rule-card p { font-size: 14px; color: #666; margin-bottom: 12px; }
+  .rule-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tag { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: #f0f0f0; color: #555; }
+  .tag-active { background: #e8f5e9; color: #32b350; }
+  .rule-actions { display: flex; gap: 8px; }
+  .rule-actions button { padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid #eee; background: #fff; }
+  .rule-actions .pause { color: #f2731a; border-color: #f2731a; }
+  .rule-actions .delete { color: #d32f2f; border-color: #d32f2f; }
+  .empty-state { text-align: center; padding: 40px 20px; color: #999; }
+  .empty-state p { margin-bottom: 16px; }
   @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } }
 </style>
 </head>
@@ -52,7 +69,50 @@
     <main class="main">
       <div class="topbar">
         <h1>Schedule</h1>
+        <a href="#" class="btn btn-primary">+ New Automation Rule</a>
       </div>
+
+      <div class="card">
+        <h2>Automation Rules</h2>
+        <p style="font-size:14px;color:#666;margin-bottom:20px;">Set these once. The system generates, renders, and publishes videos automatically — you never open the site again.</p>
+
+        <div class="rule-card">
+          <h3>Daily Dasara Series</h3>
+          <p>Two videos every day at 6:00 PM and 9:00 PM IST</p>
+          <div class="rule-meta">
+            <span class="tag tag-active">Active</span>
+            <span class="tag">Character: Toju &amp; Moju</span>
+            <span class="tag">Tone: Comedy</span>
+            <span class="tag">Length: 30 sec</span>
+            <span class="tag">Settings: Village, Temple, Train</span>
+          </div>
+          <div class="rule-actions">
+            <button class="pause">Pause</button>
+            <button class="delete">Delete</button>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <h3>Weekend Festival Specials</h3>
+          <p>One video every Saturday at 5:00 PM IST</p>
+          <div class="rule-meta">
+            <span class="tag tag-active">Active</span>
+            <span class="tag">Character: Toju &amp; Moju</span>
+            <span class="tag">Tone: Heartwarming</span>
+            <span class="tag">Length: 60 sec</span>
+            <span class="tag">Settings: Festival</span>
+          </div>
+          <div class="rule-actions">
+            <button class="pause">Pause</button>
+            <button class="delete">Delete</button>
+          </div>
+        </div>
+
+        <div class="empty-state">
+          <p>No more rules. Add one to automate your next series.</p>
+        </div>
+      </div>
+
       <div class="card">
         <h2>October 2026</h2>
         <div class="calendar">
@@ -64,20 +124,21 @@
           <div class="day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
         </div>
       </div>
+
       <div class="card">
         <h2>Upcoming Uploads</h2>
         <div class="upload-list">
           <div class="upload-item">
             <div>
               <h3>Dasara Temple Story — Part 1</h3>
-              <p>Oct 10 &middot; 6:00 PM IST</p>
+              <p>Oct 10 &middot; 6:00 PM IST &middot; Auto-generated</p>
             </div>
             <div class="status status-scheduled">Scheduled</div>
           </div>
           <div class="upload-item">
             <div>
               <h3>Train Journey — Samosa Scene</h3>
-              <p>Oct 12 &middot; 6:00 PM IST</p>
+              <p>Oct 12 &middot; 6:00 PM IST &middot; Auto-generated</p>
             </div>
             <div class="status status-scheduled">Scheduled</div>
           </div>
