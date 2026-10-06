@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — TojeToons</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f7f8; color: #1e1e22; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; left: 0; top: 0; width: 260px; height: 100vh; background: #1e1e22; padding: 28px 20px; }
+  .sidebar .logo { font-size: 20px; font-weight: 700; color: #fff; text-decoration: none; display: block; margin-bottom: 48px; }
+  .sidebar a { display: block; padding: 12px 16px; border-radius: 10px; color: #b3b3b8; text-decoration: none; font-size: 15px; margin-bottom: 8px; }
+  .sidebar a.active { background: #f2731a; color: #fff; font-weight: 600; }
+  .sidebar a:hover { background: #2a2a2e; color: #fff; }
+
+  /* MAIN */
+  .main { margin-left: 260px; padding: 32px 40px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .topbar h1 { font-size: 24px; font-weight: 700; }
+  .usage { color: #666; font-size: 14px; }
+
+  /* QUICK START */
+  .quick-start { background: #f2731a; color: #fff; border-radius: 16px; padding: 32px; text-align: center; margin-bottom: 32px; font-size: 18px; font-weight: 700; cursor: pointer; }
+  .quick-start:hover { background: #d95f0e; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 40px; }
+  .stat { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .stat .value { font-size: 32px; font-weight: 800; }
+  .stat .label { color: #666; font-size: 14px; margin-top: 4px; }
+
+  /* RECENT VIDEOS */
+  .recent h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+  .video-row { background: #fff; border-radius: 12px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .video-row .title { font-weight: 600; font-size: 17px; }
+  .chip { padding: 6px 16px; border-radius: 16px; color: #fff; font-size: 13px; font-weight: 600; }
+  .chip.scheduled { background: #3f80e6; }
+  .chip.generating { background: #f2731a; }
+  .chip.published { background: #32b350; }
+  .chip.draft { background: #999; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 20px; }
+  }
+</style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="dashboard.html" class="logo">TojeToons</a>
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="#">Projects</a>
+    <a href="#">Characters</a>
+    <a href="#">Scripts</a>
+    <a href="#">Videos</a>
+    <a href="#">Schedule</a>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1>Dashboard</h1>
+      <span class="usage">Videos left: 18 / 30</span>
+    </div>
+
+    <div class="quick-start">+ Create New Video</div>
+
+    <div class="stats">
+      <div class="stat"><div class="value">42</div><div class="label">Total Videos</div></div>
+      <div class="stat"><div class="value">6</div><div class="label">Scheduled</div></div>
+      <div class="stat"><div class="value">3</div><div class="label">Generating</div></div>
+      <div class="stat"><div class="value">33</div><div class="label">Published</div></div>
+    </div>
+
+    <div class="recent">
+      <h2>Recent Videos</h2>
+      <div class="video-row"><span class="title">Toju & Moju at Tirupati Temple</span><span class="chip scheduled">Scheduled</span></div>
+      <div class="video-row"><span class="title">Samosa Train Adventure</span><span class="chip generating">Generating</span></div>
+      <div class="video-row"><span class="title">Village Festival Chaos</span><span class="chip published">Published</span></div>
+      <div class="video-row"><span class="title">Office Clerk Moju</span><span class="chip draft">Draft</span></div>
+    </div>
+  </div>
+</body>
+</html>
