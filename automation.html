@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Automation Rule — TojeToons</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f7f8; color: #1e1e22; line-height: 1.6; }
+  .app { display: flex; min-height: 100vh; }
+  .sidebar { width: 260px; background: #1e1e22; color: #fff; padding: 24px 0; flex-shrink: 0; }
+  .sidebar .logo { font-size: 20px; font-weight: 700; padding: 0 24px 24px; border-bottom: 1px solid #333; }
+  .sidebar nav a { display: block; padding: 12px 24px; color: #aaa; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
+  .sidebar nav a.active { background: #f2731a; color: #fff; }
+  .main { flex: 1; padding: 32px; max-width: 800px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .topbar h1 { font-size: 26px; font-weight: 700; }
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+  .btn-primary { background: #f2731a; color: #fff; }
+  .btn-primary:hover { background: #d95f0e; }
+  .btn-secondary { background: #fff; color: #f2731a; border: 1px solid #f2731a; }
+  .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+  .field { margin-bottom: 24px; }
+  .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #333; }
+  .field select, .field input[type="text"], .field input[type="number"], .field textarea {
+    width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; font-family: inherit; background: #fff;
+  }
+  .field select:focus, .field input:focus, .field textarea:focus { outline: none; border-color: #f2731a; box-shadow: 0 0 0 3px rgba(242,115,26,0.15); }
+  .field .hint { font-size: 12px; color: #999; margin-top: 6px; }
+  .option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+  .option-card { border: 2px solid #eee; border-radius: 10px; padding: 14px; text-align: center; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.15s; }
+  .option-card:hover { border-color: #f2731a; background: #fff8f0; }
+  .option-card.selected { border-color: #f2731a; background: #fff3e8; color: #f2731a; }
+  .time-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .time-row input[type="time"] { flex: 1; }
+  .time-row .remove-time { background: none; border: none; color: #d32f2f; cursor: pointer; font-size: 13px; font-weight: 600; }
+  .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #eee; }
+  .toggle-row:last-child { border-bottom: none; }
+  .toggle-row span { font-size: 14px; font-weight: 500; }
+  .toggle { width: 44px; height: 24px; background: #ddd; border-radius: 12px; position: relative; cursor: pointer; border: none; }
+  .toggle.on { background: #f2731a; }
+  .toggle::after { content: ''; position: absolute; width: 20px; height: 20px; background: #fff; border-radius: 50%; top: 2px; left: 2px; transition: left 0.15s; }
+  .toggle.on::after { left: 22px; }
+  .actions { display: flex; gap: 12px; margin-top: 8px; }
+  .summary-box { background: #fff8f0; border: 1px solid #f2731a; border-radius: 10px; padding: 20px; margin-bottom: 24px; }
+  .summary-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #f2731a; }
+  .summary-box p { font-size: 14px; color: #555; }
+  @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">TojeToons</div>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="projects.html">Projects</a>
+        <a href="character.html">Characters</a>
+        <a href="script.html">Scripts</a>
+        <a href="video.html">Videos</a>
+        <a href="schedule.html" class="active">Schedule</a>
+        <a href="settings.html">Settings</a>
+        <a href="index.html">Landing Page</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <h1>New Automation Rule</h1>
+        <a href="schedule.html" class="btn btn-secondary">&larr; Back to Schedule</a>
+      </div>
+
+      <div class="summary-box">
+        <h3>What this does</h3>
+        <p>Set this once. Every day, the system generates a script, renders the video, and publishes to your YouTube channel automatically at your chosen times. You never open the site again.</p>
+      </div>
+
+      <div class="card">
+        <h2>1. Character</h2>
+        <div class="field">
+          <label>Which character should star?</label>
+          <select>
+            <option>Toju &amp; Moju</option>
+            <option>Create a new character</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>2. Tone</h2>
+        <div class="field">
+          <div class="option-grid">
+            <div class="option-card selected">Comedy</div>
+            <div class="option-card">Adventure</div>
+            <div class="option-card">Heartwarming</div>
+            <div class="option-card">Mystery</div>
+            <div class="option-card">Festival</div>
+            <div class="option-card">Slice of Life</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>3. Video Length</h2>
+        <div class="field">
+          <div class="option-grid">
+            <div class="option-card selected">15 sec</div>
+            <div class="option-card">30 sec</div>
+            <div class="option-card">60 sec</div>
+            <div class="option-card">3 min</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>4. Settings</h2>
+        <div class="field">
+          <label>Where should the story happen?</label>
+          <div class="option-grid">
+            <div class="option-card selected">Village</div>
+            <div class="option-card">Temple</div>
+            <div class="option-card">Train Journey</div>
+            <div class="option-card">Market Street</div>
+            <div class="option-card">Festival</div>
+            <div class="option-card">City</div>
+          </div>
+          <div class="hint">Pick one or more. The AI rotates through them so videos don't feel repetitive.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>5. Publish Times</h2>
+        <div class="field">
+          <label>When should videos go live? (IST)</label>
+          <div class="time-row">
+            <input type="time" value="18:00">
+            <button class="remove-time">Remove</button>
+          </div>
+          <div class="time-row">
+            <input type="time" value="21:00">
+            <button class="remove-time">Remove</button>
+          </div>
+          <button class="btn btn-secondary" style="margin-top:8px;">+ Add another time</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>6. Frequency</h2>
+        <div class="field">
+          <label>Videos per day</label>
+          <input type="number" value="2" min="1" max="5">
+          <div class="hint">Each time slot above generates one video. Two times = two videos a day.</div>
+        </div>
+        <div class="toggle-row">
+          <span>Auto-publish to YouTube</span>
+          <button class="toggle on"></button>
+        </div>
+        <div class="toggle-row">
+          <span>Add AI disclosure label automatically</span>
+          <button class="toggle on"></button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="schedule.html" class="btn btn-secondary">Cancel</a>
+        <a href="schedule.html" class="btn btn-primary">Save Rule &amp; Start Automation</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
