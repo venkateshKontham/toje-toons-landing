@@ -34,6 +34,19 @@
   .btn-primary:hover { background: #d95f0e; }
   .btn-secondary { background: #fff; color: #f2731a; border: 1px solid #f2731a; }
   .estimate { font-size: 13px; color: #999; margin-top: 12px; }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: #fff; border-radius: 16px; padding: 32px; max-width: 520px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .modal h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .modal .subtitle { font-size: 14px; color: #666; margin-bottom: 24px; }
+  .modal label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; margin-top: 16px; }
+  .modal input, .modal textarea, .modal select { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; font-family: inherit; }
+  .modal textarea { resize: vertical; min-height: 70px; }
+  .visibility-options { display: flex; gap: 8px; margin-top: 8px; }
+  .visibility-options label { display: flex; align-items: center; gap: 6px; font-weight: 500; font-size: 14px; margin: 0; cursor: pointer; padding: 8px 14px; border: 1px solid #ddd; border-radius: 8px; }
+  .visibility-options input { width: auto; }
+  .warning { background: #fff3e8; border: 1px solid #f5d0a9; border-radius: 8px; padding: 12px; font-size: 13px; color: #8a4b08; margin-top: 20px; }
+  .modal-actions { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; }
   @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } }
 </style>
 </head>
@@ -87,15 +100,55 @@
       <div class="card">
         <h2>Publish Options</h2>
         <div class="publish-options">
-          <button class="btn btn-primary">Publish Now</button>
+          <button class="btn btn-primary" onclick="openPublishModal()">Publish Now</button>
           <a href="schedule.html" class="btn btn-secondary">Schedule</a>
         </div>
         <div class="actions" style="margin-top:20px">
           <a href="script.html" class="btn btn-secondary">Back to Script</a>
-          <a href="dashboard.html" class="btn btn-primary">Finish &amp; Go to Dashboard</a>
+          <a href="dashboard.html" class="btn btn-primary">Finish & Go to Dashboard</a>
         </div>
       </div>
     </main>
   </div>
+
+  <div class="modal-overlay" id="publishModal">
+    <div class="modal">
+      <h2>Confirm Publish</h2>
+      <p class="subtitle">Review before your video goes live on YouTube.</p>
+      <label>Title</label>
+      <input type="text" value="Dasara Holidays lo Toju ki SHOCK!! 😭" id="pubTitle">
+      <label>Description</label>
+      <textarea id="pubDesc">Toju and Moju visit the temple for Dasara holidays. Comedy ensues. #TojeToons #TeluguCartoon</textarea>
+      <label>Tags</label>
+      <input type="text" value="TojeToons, Telugu Cartoon, Toju, Moju, Dasara" id="pubTags">
+      <label>Visibility</label>
+      <div class="visibility-options">
+        <label><input type="radio" name="visibility" value="public" checked> Public</label>
+        <label><input type="radio" name="visibility" value="unlisted"> Unlisted</label>
+        <label><input type="radio" name="visibility" value="private"> Private</label>
+      </div>
+      <div class="warning">⚠️ Once published, pulling the video back is messy. Double-check the title and description before confirming.</div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closePublishModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmPublish()">Publish</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openPublishModal() {
+      document.getElementById('publishModal').classList.add('open);
+    }
+    function closePublishModal() {
+      document.getElementById('publishModal').classList.remove('open);
+    }
+    function confirmPublish() {
+      alert('Video published to YouTube! (Demo only — no real upload happens in this prototype.)\nTitle: ' + document.getElementById('pubTitle').value);
+      closePublishModal();
+    }
+    document.getElementById('publishModal').addEventListener('click', function(e) {
+      if (e.target === this) closePublishModal();
+    });
+  </script>
 </body>
 </html>
