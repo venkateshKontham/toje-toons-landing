@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Characters — TojeToons</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f7f8; color: #1e1e22; line-height: 1.6; }
+  .app { display: flex; min-height: 100vh; }
+  .sidebar { width: 260px; background: #1e1e22; color: #fff; padding: 24px 0; flex-shrink: 0; }
+  .sidebar .logo { font-size: 20px; font-weight: 700; padding: 0 24px 24px; border-bottom: 1px solid #333; }
+  .sidebar nav a { display: block; padding: 12px 24px; color: #aaa; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .sidebar nav a:hover { background: #2a2a2a; color: #fff; }
+  .sidebar nav a.active { background: #f2731a; color: #fff; }
+  .main { flex: 1; padding: 32px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+  .topbar h1 { font-size: 26px; font-weight: 700; }
+  .btn { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+  .btn-primary { background: #f2731a; color: #fff; }
+  .btn-primary:hover { background: #d95f0e; }
+  .card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+  .char-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .char-card { border: 1px solid #eee; border-radius: 12px; padding: 24px; text-align: center; }
+  .char-card .avatar { font-size: 64px; margin-bottom: 12px; }
+  .char-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .char-card p { font-size: 14px; color: #666; margin-bottom: 16px; }
+  .char-meta { font-size: 13px; color: #999; }
+  @media (max-width: 768px) { .sidebar { display: none; } .main { padding: 16px; } }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">TojeToons</div>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="projects.html">Projects</a>
+        <a href="character.html" class="active">Characters</a>
+        <a href="script.html">Scripts</a>
+        <a href="video.html">Videos</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="index.html">Landing Page</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <h1>Characters</h1>
+        <a href="character.html" class="btn btn-primary">+ Create Character</a>
+      </div>
+      <div class="card">
+        <h2>Your characters</h2>
+        <div class="char-grid">
+          <div class="char-card">
+            <div class="avatar">&#128008;</div>
+            <h3>Toju</h3>
+            <p>Fat, grumpy white cat who owns a village shop. Always hungry, always complaining.</p>
+            <div class="char-meta">3D Pixar &middot; 12 videos</div>
+          </div>
+          <div class="char-card">
+            <div class="avatar">&#128045;</div>
+            <h3>Moju</h3>
+            <p>Thin, clever village mouse. Poor but smart, always one step ahead.</p>
+            <div class="char-meta">3D Pixar &middot; 12 videos</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
